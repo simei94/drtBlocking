@@ -1,0 +1,239 @@
+
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.matsim</groupId>
+	<artifactId>MA Meinhardt</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Simon's fancy MA code</name>
+	<description>Simon says</description>
+
+	<properties>
+
+		<!--SNAPSHOT:-->
+		<matsim.version>13.0-SNAPSHOT</matsim.version>
+
+		<!--weekly "release":-->
+<!--		<matsim.version>12.0-2020w18-SNAPSHOT</matsim.version>-->
+
+	</properties>
+
+	<repositories>
+
+		<!--	<repository>-->
+		<!--		<id>osgeo</id>-->
+		<!--		<name>OSGeo Release Repository</name>-->
+		<!--		<url>https://repo.osgeo.org/repository/release/</url>-->
+		<!--		<snapshots><enabled>false</enabled></snapshots>-->
+		<!--		<releases><enabled>true</enabled></releases>-->
+		<!--	</repository>-->
+
+		<repository>
+			<!-- Geotools is not on Maven central -->
+			<id>osgeo</id>
+			<name>Geotools repository</name>
+			<url>https://repo.osgeo.org/repository/release</url>
+		</repository>
+
+		<repository>
+			<!-- Repository for MATSim releases (MATSim is not on Maven central) -->
+			<id>matsim</id>
+			<url>https://dl.bintray.com/matsim/matsim</url>
+		</repository>
+		<repository>
+			<!-- For MATSim snapshots: -->
+			<id>ojo-snapshots</id>
+			<url>http://oss.jfrog.org/libs-snapshot</url>
+		</repository>
+		<repository>
+			<!-- For OVGU Algorithms -->
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+
+		<!--		the following repos are needed for matsim-scenarios-berlin v5.5-->
+		<repository>
+			<id>com.slimjars.trove4j</id>
+			<url>https://mvn.slimjars.com</url>
+		</repository>
+
+		<repository>
+			<id>de.topobyte</id>
+			<url>https://mvn.topobyte.de</url>
+		</repository>
+
+	</repositories>
+
+
+	<dependencies>
+<!--		&lt;!&ndash; This is the matsim "core": &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>org.matsim</groupId>-->
+<!--			<artifactId>matsim</artifactId>-->
+<!--			<version>${matsim.version}</version>-->
+<!--		</dependency>-->
+
+<!--		&lt;!&ndash;MATSim examples. Not transitive &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>org.matsim</groupId>-->
+<!--			<artifactId>matsim-examples</artifactId>-->
+<!--			<version>13.0-SNAPSHOT</version>-->
+<!--			&lt;!&ndash;(not in weekly release!)&ndash;&gt;-->
+<!--		</dependency>-->
+
+
+<!--		&lt;!&ndash; contribs &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>org.matsim.contrib</groupId>-->
+<!--			<artifactId>freight</artifactId>-->
+<!--			<version>${matsim.version}</version>-->
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<groupId>org.matsim</groupId>-->
+<!--					<artifactId>matsim-examples</artifactId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>org.matsim.contrib</groupId>-->
+<!--			<artifactId>drt</artifactId>-->
+<!--			<version>${matsim.version}</version>-->
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<groupId>org.matsim</groupId>-->
+<!--					<artifactId>matsim-examples</artifactId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>org.matsim.contrib</groupId>-->
+<!--			<artifactId>taxi</artifactId>-->
+<!--			<version>${matsim.version}</version>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>org.matsim.contrib</groupId>-->
+<!--			<artifactId>dvrp</artifactId>-->
+<!--			<version>${matsim.version}</version>-->
+<!--			<type>pom</type>-->
+<!--		</dependency>-->
+
+		<!-- berlin scenario-->
+<!--		<dependency>-->
+<!--			<groupId>com.github.matsim-vsp</groupId>-->
+<!--			<artifactId>matsim-berlin</artifactId>-->
+<!--			&lt;!&ndash;            <version>5.3</version>&ndash;&gt;-->
+<!--			<version>5.4/version>-->
+<!--		</dependency>-->
+
+		<dependency>
+			<groupId>com.github.matsim-scenarios</groupId>
+			<artifactId>matsim-berlin</artifactId>
+
+<!--			<version>5.5.x-a498c2c8db-1</version> &lt;!&ndash; january 2020 &ndash;&gt;-->
+			<version>5.5.x-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.matsim-vsp</groupId>
+			<artifactId>drt-speed-up</artifactId>
+			<!-- for some reason jitpack does not like release v0.0.2, but is happy with the commit id of the very same release -->
+			<version>efc228074e</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.matsim-vsp</groupId>
+			<artifactId>opt-drt</artifactId>
+			<version>v2.3</version>
+		</dependency>
+
+		<dependency>
+			<!-- Include the JUnit testing library. Not transitive. -->
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<!--MATSim test infrastructure. Not transitive. -->
+			<groupId>org.matsim</groupId>
+			<artifactId>matsim</artifactId>
+			<type>test-jar</type>
+			<exclusions>
+				<exclusion>
+					<artifactId>guava</artifactId>
+					<groupId>com.google.guava</groupId>
+				</exclusion>
+			</exclusions>
+			<version>${matsim.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ovgu-mansci</groupId>
+			<artifactId>pave</artifactId>
+			<version>-SNAPSHOT</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+					<showWarnings>false</showWarnings>
+					<showDeprecation>false</showDeprecation>
+					<encoding>UTF-8</encoding>
+					<!-- configure initial and maximal memory for compiling -->
+					<fork>true</fork>
+					<meminitial>128m</meminitial>
+					<maxmem>512m</maxmem>
+					<compilerArguments>
+						<Xmaxwarns>4000</Xmaxwarns>
+						<Xmaxerrs>100</Xmaxerrs>
+					</compilerArguments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>org.matsim.gui.MATSimGUI</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
