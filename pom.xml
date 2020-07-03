@@ -6,7 +6,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.matsim</groupId>
-	<artifactId>MA Meinhardt</artifactId>
+	<artifactId>drtBlocking</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Simon's fancy MA code</name>
 	<description>Simon says</description>
