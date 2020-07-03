@@ -1,1 +1,1 @@
-Simon's fance master thesis on dual-use of fleet vehiclesgit git 
+Simon's fancy master thesis on dual-use of fleet vehiclesgit git 
