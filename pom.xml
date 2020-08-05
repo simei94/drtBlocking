@@ -137,6 +137,15 @@
 			<version>master-SNAPSHOT</version>
 		</dependency>
 
+
+		<dependency>
+			<groupId>com.github.matsim-org</groupId>
+			<artifactId>matsim-episim</artifactId>
+			<version>master-SNAPSHOT</version>
+		</dependency>
+
+
+
 		<dependency>
 			<groupId>com.github.matsim-scenarios</groupId>
 			<artifactId>matsim-berlin</artifactId>
