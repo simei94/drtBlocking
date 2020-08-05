@@ -25,7 +25,13 @@ import org.matsim.run.drtBlocking.RunDrtBlocking;
 public class TestRunner {
 
 	public static void main(String[] args) {
-		RunDrtBlocking bb;
+
+		String configPath = "";
+		String carrierPlans = "";
+		String carrierVehTypes = "";
+		boolean performTourPlanning = false;
+		RunDrtBlocking.main(new String[]{configPath,carrierPlans,carrierVehTypes, "" + performTourPlanning});
+
 	}
 
 }

@@ -134,17 +134,9 @@
 		<dependency>
 			<groupId>com.github.matsim-vsp</groupId>
 			<artifactId>pave</artifactId>
-			<version>master-SNAPSHOT</version>
+<!--			<version>master-SNAPSHOT</version>-->
+			<version>b55035f37c</version>
 		</dependency>
-
-
-		<dependency>
-			<groupId>com.github.matsim-org</groupId>
-			<artifactId>matsim-episim</artifactId>
-			<version>master-SNAPSHOT</version>
-		</dependency>
-
-
 
 		<dependency>
 			<groupId>com.github.matsim-scenarios</groupId>
