@@ -20,6 +20,8 @@
 
 package run;
 
+import org.matsim.api.core.v01.Scenario;
+import org.matsim.core.controler.Controler;
 import org.matsim.run.drtBlocking.RunDrtBlocking;
 
 public class TestRunner {
@@ -30,7 +32,14 @@ public class TestRunner {
 		String carrierPlans = "";
 		String carrierVehTypes = "";
 		boolean performTourPlanning = false;
-		RunDrtBlocking.main(new String[]{configPath,carrierPlans,carrierVehTypes, "" + performTourPlanning});
+
+		Scenario scenario = RunDrtBlocking.prepareScenario(configPath, carrierPlans, carrierVehTypes, performTourPlanning);
+
+		scenario.getConfig().controler().setOutputDirectory("output-test");
+
+		Controler controler = RunDrtBlocking.prepareControler(scenario);
+
+		controler.run();
 
 	}
 
