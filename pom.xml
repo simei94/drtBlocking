@@ -69,68 +69,6 @@
 
 
 	<dependencies>
-<!--		&lt;!&ndash; This is the matsim "core": &ndash;&gt;-->
-<!--		<dependency>-->
-<!--			<groupId>org.matsim</groupId>-->
-<!--			<artifactId>matsim</artifactId>-->
-<!--			<version>${matsim.version}</version>-->
-<!--		</dependency>-->
-
-<!--		&lt;!&ndash;MATSim examples. Not transitive &ndash;&gt;-->
-<!--		<dependency>-->
-<!--			<groupId>org.matsim</groupId>-->
-<!--			<artifactId>matsim-examples</artifactId>-->
-<!--			<version>13.0-SNAPSHOT</version>-->
-<!--			&lt;!&ndash;(not in weekly release!)&ndash;&gt;-->
-<!--		</dependency>-->
-
-
-<!--		&lt;!&ndash; contribs &ndash;&gt;-->
-<!--		<dependency>-->
-<!--			<groupId>org.matsim.contrib</groupId>-->
-<!--			<artifactId>freight</artifactId>-->
-<!--			<version>${matsim.version}</version>-->
-<!--			<exclusions>-->
-<!--				<exclusion>-->
-<!--					<groupId>org.matsim</groupId>-->
-<!--					<artifactId>matsim-examples</artifactId>-->
-<!--				</exclusion>-->
-<!--			</exclusions>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.matsim.contrib</groupId>-->
-<!--			<artifactId>drt</artifactId>-->
-<!--			<version>${matsim.version}</version>-->
-<!--			<exclusions>-->
-<!--				<exclusion>-->
-<!--					<groupId>org.matsim</groupId>-->
-<!--					<artifactId>matsim-examples</artifactId>-->
-<!--				</exclusion>-->
-<!--			</exclusions>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.matsim.contrib</groupId>-->
-<!--			<artifactId>taxi</artifactId>-->
-<!--			<version>${matsim.version}</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.matsim.contrib</groupId>-->
-<!--			<artifactId>dvrp</artifactId>-->
-<!--			<version>${matsim.version}</version>-->
-<!--			<type>pom</type>-->
-<!--		</dependency>-->
-
-		<!-- berlin scenario-->
-<!--		<dependency>-->
-<!--			<groupId>com.github.matsim-vsp</groupId>-->
-<!--			<artifactId>matsim-berlin</artifactId>-->
-<!--			&lt;!&ndash;            <version>5.3</version>&ndash;&gt;-->
-<!--			<version>5.4/version>-->
-<!--		</dependency>-->
-
 		<dependency>
 			<groupId>com.github.matsim-vsp</groupId>
 			<artifactId>pave</artifactId>
