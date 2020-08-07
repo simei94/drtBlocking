@@ -72,10 +72,10 @@
 		<dependency>
 			<groupId>com.github.matsim-vsp</groupId>
 			<artifactId>pave</artifactId>
-<!--			<version>master-SNAPSHOT</version>-->
+			<version>master-SNAPSHOT</version>
 <!--			<version>b55035f37c</version>-->
 
-				<version>42811e979a</version>
+<!--				<version>42811e979a</version>-->
 
 		</dependency>
 
