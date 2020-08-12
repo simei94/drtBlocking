@@ -8,8 +8,8 @@
 	<groupId>org.matsim</groupId>
 	<artifactId>drtBlocking</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Simon's fancy MA code</name>
-	<description>Simon says</description>
+	<name>code on multi-usage of DRT vehicles</name>
+	<description>Enables blocking of DRT vehicles for freight usage</description>
 
 	<properties>
 

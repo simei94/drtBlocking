@@ -28,9 +28,9 @@ public class TestRunner {
 
 	public static void main(String[] args) {
 
-		String configPath = "";
-		String carrierPlans = "";
-		String carrierVehTypes = "";
+		String configPath = "C:/Users/simon/tubCloud/MA/InputDRT/input_config_reduced.xml";
+		String carrierPlans = "C:/Users/simon/tubCloud/MA/InputDRT/carriers_services_openBerlinNet_Lichtenberg Nord.xml";
+		String carrierVehTypes = "C:/Users/simon/tubCloud/MA/InputDRT/carrier_vehicleTypes.xml";
 		boolean performTourPlanning = false;
 
 		Scenario scenario = RunDrtBlocking.prepareScenario(configPath, carrierPlans, carrierVehTypes, performTourPlanning);
@@ -40,6 +40,8 @@ public class TestRunner {
 		Controler controler = RunDrtBlocking.prepareControler(scenario);
 
 		controler.run();
+
+
 
 	}
 
