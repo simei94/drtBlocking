@@ -73,7 +73,7 @@
 			<groupId>com.github.matsim-vsp</groupId>
 			<artifactId>pave</artifactId>
 			<version>master-SNAPSHOT</version>
-<!--			<version>b55035f37c</version>-->
+			<!--<version>b55035f37c</version>-->
 
 <!--				<version>42811e979a</version>-->
 
@@ -83,7 +83,7 @@
 			<groupId>com.github.matsim-scenarios</groupId>
 			<artifactId>matsim-berlin</artifactId>
 
-<!--			<version>5.5.x-a498c2c8db-1</version> &lt;!&ndash; january 2020 &ndash;&gt;-->
+			<!--<version>5.5.x-a498c2c8db-1</version> &lt;!&ndash; january 2020 &ndash;&gt;-->
 			<version>5.5.x-SNAPSHOT</version>
 		</dependency>
 
@@ -127,6 +127,25 @@
 			<artifactId>pave</artifactId>
 			<version>-SNAPSHOT</version>
 		</dependency>
+
+		<!--Testing GeoTools dependencies to fix bugs
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-main</artifactId>
+			<version>21.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-cql</artifactId>
+			<version>21.5</version>
+		</dependency>
+
+		</dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-api</artifactId>
+			<version>21.5</version>
+		</dependency>-->
 
 	</dependencies>
 

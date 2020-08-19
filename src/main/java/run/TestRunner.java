@@ -33,13 +33,13 @@ public class TestRunner {
 		String carrierVehTypes = "C:/Users/simon/tubCloud/MA/InputDRT/carrier_vehicleTypes.xml";
 		boolean performTourPlanning = false;
 
-		Scenario scenario = RunDrtBlocking.prepareScenario(configPath, carrierPlans, carrierVehTypes, performTourPlanning);
+		//Scenario scenario = RunDrtBlocking.prepareScenario(configPath, carrierPlans, carrierVehTypes, performTourPlanning);
 
-		scenario.getConfig().controler().setOutputDirectory("output-test");
+		//scenario.getConfig().controler().setOutputDirectory("output-test");
 
-		Controler controler = RunDrtBlocking.prepareControler(scenario);
+		//Controler controler = RunDrtBlocking.prepareControler(scenario);
 
-		controler.run();
+		//controler.run();
 
 
 

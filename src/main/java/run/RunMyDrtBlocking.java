@@ -1,23 +1,3 @@
-/* *********************************************************************** *
- * project: org.matsim.*
- * Controler.java
- *                                                                         *
- * *********************************************************************** *
- *                                                                         *
- * copyright       : (C) 2007 by the members listed in the COPYING,        *
- *                   LICENSE and WARRANTY file.                            *
- * email           : info at matsim dot org                                *
- *                                                                         *
- * *********************************************************************** *
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *   See also COPYING, LICENSE and WARRANTY file                           *
- *                                                                         *
- * *********************************************************************** */
-
 package run;
 
 import ch.sbb.matsim.config.SwissRailRaptorConfigGroup;
@@ -66,7 +46,7 @@ public class RunMyDrtBlocking {
 
     /**
      *
-     *dsdsdsdsdsdsdsdsds
+     *
      * @param args should contain the following arguments in the specified order:
      *             1) path to config
      *             2) path to carrier plans
@@ -78,7 +58,8 @@ public class RunMyDrtBlocking {
         String configPath = "C:/Users/simon/tubCloud/MA/InputDRT/input_config_reduced.xml";
         String carrierPlans = "C:/Users/simon/tubCloud/MA/InputDRT/carriers_services_openBerlinNet_Lichtenberg Nord.xml";
         String carrierVehTypes = "C:/Users/simon/tubCloud/MA/InputDRT/carrier_vehicleTypes.xml";
-        boolean performTourPlanning = true;
+        boolean performTourPlanning = false;
+
         Scenario scenario = prepareScenario(configPath, carrierPlans, carrierVehTypes, performTourPlanning);
 
         Controler controler = prepareControler(scenario);
@@ -86,7 +67,7 @@ public class RunMyDrtBlocking {
         controler.run();
     }
 
-    static Scenario prepareScenario(String configPath, String carrierPlans, String carrierVehTypes, boolean performTourplanning) {
+    public static Scenario prepareScenario(String configPath, String carrierPlans, String carrierVehTypes, boolean performTourplanning) {
         Config config = RunDrtOpenBerlinScenario.prepareConfig(new String[]{configPath});
 //		config.qsim().setSimStarttimeInterpretation(QSimConfigGroup.StarttimeInterpretation.onlyUseStarttime);
         config.controler().setLastIteration(0);
@@ -118,16 +99,16 @@ public class RunMyDrtBlocking {
                 FreightUtils.runJsprit(scenario, freightCfg);
                 new File(config.controler().getOutputDirectory()).mkdirs();
                 new CarrierPlanXmlWriterV2(FreightUtils.getCarriers(scenario)).write(config.controler().getOutputDirectory() + "carriers_planned.xml");
-            } catch (InterruptedException f) {
-                f.printStackTrace();
-            } catch (ExecutionException g) {
-                g.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
             }
         }
         return scenario;
     }
 
-    static Controler prepareControler(Scenario scenario){
+    public static Controler prepareControler(Scenario scenario){
         Controler controler = RunBerlinScenario.prepareControler( scenario ) ;
 
         configureDRT(scenario, controler);
