@@ -4,6 +4,7 @@ import ch.sbb.matsim.config.SwissRailRaptorConfigGroup;
 import ch.sbb.matsim.routing.pt.raptor.RaptorIntermodalAccessEgress;
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.TransportMode;
+import org.matsim.api.core.v01.events.ActivityStartEvent;
 import org.matsim.api.core.v01.population.Leg;
 import org.matsim.api.core.v01.population.Person;
 import org.matsim.api.core.v01.population.Population;
@@ -42,6 +43,7 @@ import java.util.Random;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
+
 public class RunMyDrtBlocking {
 
     /**
@@ -56,7 +58,7 @@ public class RunMyDrtBlocking {
     public static void main(String[] args) {
 
         String configPath = "C:/Users/simon/tubCloud/MA/InputDRT/input_config_reduced.xml";
-        String carrierPlans = "C:/Users/simon/tubCloud/MA/InputDRT/carriers_services_openBerlinNet_Lichtenberg Nord.xml";
+        String carrierPlans = "C:/Users/simon/tubCloud/MA/InputDRT/carriers_services_openBerlinNet_LichtenbergNord.xml";
         String carrierVehTypes = "C:/Users/simon/tubCloud/MA/InputDRT/carrier_vehicleTypes.xml";
         boolean performTourPlanning = false;
 
@@ -71,6 +73,7 @@ public class RunMyDrtBlocking {
         Config config = RunDrtOpenBerlinScenario.prepareConfig(new String[]{configPath});
 //		config.qsim().setSimStarttimeInterpretation(QSimConfigGroup.StarttimeInterpretation.onlyUseStarttime);
         config.controler().setLastIteration(0);
+        config.transit().setUseTransit(false);
 
 //		this is not set by RunBerlinScenario, but vsp consistency checker needs it...
 //		config.planCalcScore().setFractionOfIterationsToStartScoreMSA(0.8);
@@ -83,7 +86,9 @@ public class RunMyDrtBlocking {
 
         FreightConfigGroup freightCfg = ConfigUtils.addOrGetModule(config, FreightConfigGroup.class);
         freightCfg.setCarriersFile(carrierPlans);
+        System.out.println("These are our carrier plans: " + freightCfg.getCarriersFile());
         freightCfg.setCarriersVehicleTypesFile(carrierVehTypes);
+        System.out.println("These are our carrier vehicle types: " + freightCfg.getCarriersVehicleTypesFile());
 
         DrtConfigGroup drtCfg = DrtConfigGroup.getSingleModeDrtConfig(config);
 
@@ -152,6 +157,14 @@ public class RunMyDrtBlocking {
         // Add drt-specific fare module
         controler.addOverridingModule(new DrtFareModule());
     }
+
+    /*public void handleEvent(ActivityStartEvent event) {
+        if (event.getActType()=="car interaction") {
+
+
+
+        }
+    }*/
 
 
 }

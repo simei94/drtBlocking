@@ -22,7 +22,7 @@ package run;
 
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.core.controler.Controler;
-import org.matsim.run.drtBlocking.RunDrtBlocking;
+//import org.matsim.run.drtBlocking.RunDrtBlocking;
 
 public class TestRunner {
 
@@ -38,6 +38,8 @@ public class TestRunner {
 		//scenario.getConfig().controler().setOutputDirectory("output-test");
 
 		//Controler controler = RunDrtBlocking.prepareControler(scenario);
+
+		//config.transit().setUseTransit(false);
 
 		//controler.run();
 
