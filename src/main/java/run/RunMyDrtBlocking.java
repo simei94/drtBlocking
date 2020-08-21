@@ -5,9 +5,7 @@ import ch.sbb.matsim.routing.pt.raptor.RaptorIntermodalAccessEgress;
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.TransportMode;
 import org.matsim.api.core.v01.events.ActivityStartEvent;
-import org.matsim.api.core.v01.population.Leg;
-import org.matsim.api.core.v01.population.Person;
-import org.matsim.api.core.v01.population.Population;
+import org.matsim.api.core.v01.population.*;
 import org.matsim.contrib.av.robotaxi.fares.drt.DrtFareModule;
 import org.matsim.contrib.drt.analysis.DrtModeAnalysisModule;
 import org.matsim.contrib.drt.routing.MultiModeDrtMainModeIdentifier;
@@ -20,14 +18,17 @@ import org.matsim.contrib.freight.carrier.CarrierUtils;
 import org.matsim.contrib.freight.utils.FreightUtils;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
+import org.matsim.core.config.groups.PlanCalcScoreConfigGroup;
 import org.matsim.core.config.groups.QSimConfigGroup;
 import org.matsim.core.controler.AbstractModule;
 import org.matsim.core.controler.Controler;
 import org.matsim.core.controler.OutputDirectoryHierarchy;
 import org.matsim.core.gbl.MatsimRandom;
+import org.matsim.core.population.PopulationUtils;
 import org.matsim.core.router.AnalysisMainModeIdentifier;
 import org.matsim.core.router.MainModeIdentifier;
 import org.matsim.core.router.TripStructureUtils;
+import org.matsim.core.scenario.ScenarioUtils;
 import org.matsim.drtBlockings.DrtBlockingModule;
 import org.matsim.run.RunBerlinScenario;
 import org.matsim.run.drt.OpenBerlinIntermodalPtDrtRouterAnalysisModeIdentifier;
@@ -60,20 +61,26 @@ public class RunMyDrtBlocking {
         String configPath = "C:/Users/simon/tubCloud/MA/InputDRT/input_config_reduced.xml";
         String carrierPlans = "C:/Users/simon/tubCloud/MA/InputDRT/carriers_services_openBerlinNet_LichtenbergNord.xml";
         String carrierVehTypes = "C:/Users/simon/tubCloud/MA/InputDRT/carrier_vehicleTypes.xml";
+        String newInputPlans = "C:/Users/simon/tubCloud/MA/InputDRT/drtBlockingBase1pct.output_plansFIXED.xml.gz";
         boolean performTourPlanning = false;
 
-        Scenario scenario = prepareScenario(configPath, carrierPlans, carrierVehTypes, performTourPlanning);
+        Scenario scenario = prepareScenario(configPath, carrierPlans, carrierVehTypes, performTourPlanning, newInputPlans);
 
         Controler controler = prepareControler(scenario);
 
         controler.run();
     }
 
-    public static Scenario prepareScenario(String configPath, String carrierPlans, String carrierVehTypes, boolean performTourplanning) {
+    public static Scenario prepareScenario(String configPath, String carrierPlans, String carrierVehTypes, boolean performTourplanning, String newInputPlans) {
         Config config = RunDrtOpenBerlinScenario.prepareConfig(new String[]{configPath});
 //		config.qsim().setSimStarttimeInterpretation(QSimConfigGroup.StarttimeInterpretation.onlyUseStarttime);
         config.controler().setLastIteration(0);
         config.transit().setUseTransit(false);
+        config.plans().setInputFile(newInputPlans);
+        config.planCalcScore().addActivityParams(new PlanCalcScoreConfigGroup.ActivityParams(TripStructureUtils.createStageActivityType("pt")).setScoringThisActivityAtAll(false));
+        config.planCalcScore().addActivityParams(new PlanCalcScoreConfigGroup.ActivityParams(TripStructureUtils.createStageActivityType("car")).setScoringThisActivityAtAll(false));
+
+
 
 //		this is not set by RunBerlinScenario, but vsp consistency checker needs it...
 //		config.planCalcScore().setFractionOfIterationsToStartScoreMSA(0.8);
@@ -154,17 +161,11 @@ public class RunMyDrtBlocking {
         });
         controler.configureQSimComponents(DvrpQSimComponents.activateAllModes(MultiModeDrtConfigGroup.get(controler.getConfig())));
 
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + multiModeDrtCfg.getParameterSets("drt"));
+
         // Add drt-specific fare module
         controler.addOverridingModule(new DrtFareModule());
     }
-
-    /*public void handleEvent(ActivityStartEvent event) {
-        if (event.getActType()=="car interaction") {
-
-
-
-        }
-    }*/
 
 
 }
