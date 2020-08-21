@@ -161,7 +161,7 @@ public class RunMyDrtBlocking {
         });
         controler.configureQSimComponents(DvrpQSimComponents.activateAllModes(MultiModeDrtConfigGroup.get(controler.getConfig())));
 
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + multiModeDrtCfg.getParameterSets("drt"));
+        //System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + multiModeDrtCfg.getParameterSets("drt"));
 
         // Add drt-specific fare module
         controler.addOverridingModule(new DrtFareModule());
