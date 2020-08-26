@@ -29,7 +29,7 @@ import java.util.Map;
 
 public class TaskCoordinatesAnalysis {
 
-    String outputCSVFilePath = "";
+    String outputCSVFilePath = "C:/Users/simon/tubCloud/MA/InputDRT/test.csv";
 
     private Map<Coordinate, Coordinate> EventCoordinates = new HashMap<>();
 
@@ -41,23 +41,23 @@ public class TaskCoordinatesAnalysis {
 
         String pathToConfig = "C:/Users/simon/tubCloud/MA/TaskCoordinates/drtBlockingBase1pct.output_config_reduced.xml";
         String pathToEvents = "C:/Users/simon/tubCloud/MA/TaskCoordinates/dummyOutputEvents.xml";
-        String outputCSVFilePath = "C:/Users/simon/tubCloud/MA/TaskCoordinates/DRTTaskCoordinates.csv";
 
         Config config = ConfigUtils.loadConfig(pathToConfig, new MultiModeDrtConfigGroup(), new DvrpConfigGroup());
-        Network network = NetworkUtils.readNetwork(config.network().getInputFile());
+        //Network network = NetworkUtils.readNetwork(config.network().getInputFile());
 
-
-
-
+        TaskCoordinatesAnalysis.readEvents(config, pathToEvents);
     }
 
-    public void readEvents(Config config, String pathToEvents) {
+    static void readEvents(Config config, String pathToEvents) {
 
         EventsManager eventsManager = EventsUtils.createEventsManager(config);
         TaskCoordinatesAnalyzer analyzer = new TaskCoordinatesAnalyzer();
         eventsManager.addHandler(analyzer);
         EventsReaderXMLv1 basicReader = new EventsReaderXMLv1(eventsManager);
         basicReader.readFile(pathToEvents);
+        analyzer.write();
+
+        System.out.println("Output was written to " + analyzer.outputCSVFilePath);
 
         //DrtPassengerEventsReader reader = new DrtPassengerEventsReader(eventsManager);
         //reader.readFile(pathToEvents);
