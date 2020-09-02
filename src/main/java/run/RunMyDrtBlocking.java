@@ -59,6 +59,9 @@ public class RunMyDrtBlocking {
     public static void main(String[] args) {
 
         String configPath = "C:/Users/simon/tubCloud/MA/InputDRT/input_config_reduced.xml";
+//        String configPath = "C:/Users/simon/tubCloud/MA/InputDRT/berlin-drt-v5.5-1pct.config.xml";
+
+//        String configPath = "C:/Users/simon/tubCloud/MA/InputDRT/input_config_reduced_from1percentRun.xml";
         String carrierPlans = "C:/Users/simon/tubCloud/MA/InputDRT/carriers_services_openBerlinNet_LichtenbergNord.xml";
         String carrierVehTypes = "C:/Users/simon/tubCloud/MA/InputDRT/carrier_vehicleTypes.xml";
         String newInputPlans = "C:/Users/simon/tubCloud/MA/InputDRT/drtBlockingBase1pct.output_plansFIXED.xml.gz";
@@ -75,7 +78,9 @@ public class RunMyDrtBlocking {
         Config config = RunDrtOpenBerlinScenario.prepareConfig(new String[]{configPath});
 //		config.qsim().setSimStarttimeInterpretation(QSimConfigGroup.StarttimeInterpretation.onlyUseStarttime);
         config.controler().setLastIteration(0);
-        config.transit().setUseTransit(false);
+        config.controler().setOverwriteFileSetting(OutputDirectoryHierarchy.OverwriteFileSetting.overwriteExistingFiles);
+
+        //config.transit().setUseTransit(false);
         config.plans().setInputFile(newInputPlans);
         config.planCalcScore().addActivityParams(new PlanCalcScoreConfigGroup.ActivityParams(TripStructureUtils.createStageActivityType("pt")).setScoringThisActivityAtAll(false));
         config.planCalcScore().addActivityParams(new PlanCalcScoreConfigGroup.ActivityParams(TripStructureUtils.createStageActivityType("car")).setScoringThisActivityAtAll(false));
