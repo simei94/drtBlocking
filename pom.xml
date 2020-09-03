@@ -134,7 +134,8 @@
 			<groupId>com.github.matsim-vsp</groupId>
 			<artifactId>pave</artifactId>
 <!--			<version>master-SNAPSHOT</version>-->
-			<version>-4419d01956-1</version>
+<!--			<version>-4419d01956-1</version>-->
+			<version>master-4302db0ccd-1</version>
 
 		</dependency>
 
