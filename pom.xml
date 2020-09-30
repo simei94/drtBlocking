@@ -14,10 +14,10 @@
 	<properties>
 
 		<!--SNAPSHOT:-->
-<!--		<matsim.version>13.0-SNAPSHOT</matsim.version>-->
+		<matsim.version>13.0-SNAPSHOT</matsim.version>
 
 		<!--weekly "release":-->
-		<matsim.version>13.0-2020w34-SNAPSHOT</matsim.version>
+<!--		<matsim.version>13.0-2020w34-SNAPSHOT</matsim.version>-->
 
 	</properties>
 
@@ -119,7 +119,7 @@
 			<groupId>org.matsim.contrib</groupId>
 			<artifactId>dvrp</artifactId>
 			<version>${matsim.version}</version>
-			<type>pom</type>
+<!--			<type>pom</type>-->
 		</dependency>
 
 		<!-- berlin scenario-->
@@ -133,9 +133,9 @@
 		<dependency>
 			<groupId>com.github.matsim-vsp</groupId>
 			<artifactId>pave</artifactId>
-<!--			<version>master-SNAPSHOT</version>-->
+			<version>master-SNAPSHOT</version>
 <!--			<version>-4419d01956-1</version>-->
-			<version>master-4302db0ccd-1</version>
+<!--			<version>master-4302db0ccd-1</version>-->
 
 		</dependency>
 
